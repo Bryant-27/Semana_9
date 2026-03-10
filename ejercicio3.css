@@ -1,57 +1,83 @@
-/* Estilos generales */
 body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f4;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #eef2f3;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
-  margin: 0;
+  padding: 50px;
 }
 
-.card {
+.contenedor-perfiles {
+  width: 100%;
+  max-width: 500px;
   background: white;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   overflow: hidden;
-  max-width: 600px;
-  display: flex; /* Vista para PC: Lado a lado */
-  flex-direction: row;
-  transition: 0.3s;
 }
 
-.card-image img {
-  width: 200px;
-  height: 100%;
-  object-fit: cover;
+/* Ocultamos el radio button */
+input[type="radio"] {
+  display: none;
 }
 
-.card-content {
+/* Cabecera de la ficha (lo que siempre se ve) */
+.cabecera {
+  display: flex;
+  align-items: center;
+  padding: 15px 20px;
+  background: #fff;
+  cursor: pointer;
+  border-bottom: 1px solid #eee;
+  transition: background 0.3s;
+}
+
+.cabecera:hover {
+  background: #f9f9f9;
+}
+
+.cabecera img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 15px;
+  border: 2px solid #3498db;
+}
+
+.cabecera span {
+  font-weight: 600;
+  color: #333;
+}
+
+/* Contenido oculto */
+.contenido {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+  background: #fafafa;
+}
+
+.info-detallada {
   padding: 20px;
+  text-align: center;
 }
 
-button {
-  background-color: #007bff;
+.btn {
+  background: #3498db;
   color: white;
   border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
+  padding: 8px 20px;
+  border-radius: 20px;
   cursor: pointer;
+  margin-top: 10px;
 }
 
-/* --- VISTA MÓVIL (Media Query) --- */
-@media (max-width: 480px) {
-  .card {
-    flex-direction: column; /* Cambia a vertical en móviles */
-    width: 90%;
-  }
+/* --- Lógica para abrir la ficha seleccionada --- */
+input[type="radio"]:checked + .cabecera + .contenido {
+  max-height: 250px; /* Suficiente para mostrar el texto */
+  border-bottom: 1px solid #eee;
+}
 
-  .card-image img {
-    width: 100%;
-    height: 200px;
-  }
-
-  .card-content {
-    text-align: center;
-  }
+/* Estilo visual para la ficha activa */
+input[type="radio"]:checked + .cabecera {
+  background: #ebf5fb;
 }
