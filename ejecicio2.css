@@ -1,0 +1,104 @@
+/* --- ESTRUCTURA DEL EJERCICIO (Basada en la imagen) --- */
+body {
+    background: #020d18;
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    color: white;
+}
+
+#contenedor {
+    width: 700px;
+    margin: 0 auto; /* Centra el contenedor */
+    background: rgba(255, 255, 255, 0.05);
+    overflow: hidden; /* Para contener los floats */
+}
+
+#cabecera {
+    background: #b30000;
+    padding: 20px;
+    text-align: center;
+}
+
+#menu {
+    float: left;
+    width: 150px;
+    background: #064e1b;
+    min-height: 400px;
+}
+
+#contenido {
+    float: left;
+    width: 550px;
+    background: #01080f;
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+#pie {
+    clear: both;
+    background: #333;
+    padding: 10px;
+    text-align: center;
+}
+
+/* --- TU DISEÑO NAVIDEÑO (Ajustado al contenedor) --- */
+.escena {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 400px;
+    padding-bottom: 20px;
+}
+
+.arbol-contenedor {
+    position: relative;
+    z-index: 1;
+    transform: scale(0.7); /* Reducido para que quepa en el div */
+}
+
+.hojas {
+    width: 0; height: 0;
+    border-left: 100px solid transparent;
+    border-right: 100px solid transparent;
+    border-bottom: 200px solid #064e1b;
+}
+
+.tronco { width: 30px; height: 40px; background: #3d2410; margin: 0 auto; }
+
+.estrella {
+    color: #ffcc00; font-size: 40px;
+    position: absolute; top: -35px; left: 50%;
+    transform: translateX(-50%);
+    text-shadow: 0 0 15px gold;
+}
+
+.regalos-piso {
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+    transform: scale(0.6); /* Ajuste de escala para el ancho de 550px */
+}
+
+.regalo { width: 120px; cursor: pointer; transition: 0.3s; position: relative; }
+
+.caja, .tapa {
+    background: radial-gradient(#fff 10%, transparent 15%), #f80000;
+    background-size: 15px 15px;
+    width: 120px;
+}
+
+.caja { height: 70px; position: relative; }
+.tapa { height: 25px; z-index: 2; transition: 0.5s; }
+
+.caja span:first-child { width: 100%; height: 15px; top: 25px; position: absolute; background: #efb810; }
+.caja span:last-child { width: 20px; height: 100%; left: 50px; position: absolute; background: #efb810; }
+
+.promo {
+    position: absolute; width: 150px; left: -15px; top: 20px;
+    text-align: center; opacity: 0; transition: 0.6s;
+}
+
+.regalo:hover .tapa { transform: translateY(-50px) rotate(10deg); }
+.regalo:hover .promo { opacity: 1; top: -70px; }
